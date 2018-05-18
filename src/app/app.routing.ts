@@ -15,17 +15,13 @@ export const routes: Routes = [
     path: '',
     component: FullLayoutComponent,
     data: {
-      title: 'Home'
+      title: 'Accueil'
     },
     children: [
       {
-        path: 'dashboard',
-        loadChildren: './dashboard/dashboard.module#DashboardModule'
-      },
-      {
-        path: 'profil',
-        loadChildren: './profil/profil.module#ProfilModule'
-      },
+        path: '',
+        loadChildren: './accueil/accueil.module#AccueilModule'
+      }
     ]
   },
   {
