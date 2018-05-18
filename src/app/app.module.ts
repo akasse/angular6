@@ -19,7 +19,12 @@ import { FullLayoutComponent } from './layouts/full-layout/full-layout.component
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 //========================Authentification===========================
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { BeforeLoginService, AfterLoginService } from './guard';
+import { TokenService } from './services';
+import { AuthakService } from './services/authak.service';
+import {SlimLoadingBarModule} from 'ng2-slim-loading-bar';
 
 
 
@@ -29,6 +34,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
+    SlimLoadingBarModule.forRoot(),
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
@@ -42,10 +48,15 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
   ],
-  providers: [{
+  providers: [
+    BeforeLoginService,
+    AfterLoginService,
+    TokenService,
+    AuthakService,
+    {
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   }],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

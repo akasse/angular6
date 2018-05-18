@@ -5,6 +5,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { FullLayoutComponent } from './layouts/full-layout/full-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 
+import { BeforeLoginService, AfterLoginService } from './guard';
+
+
 export const routes: Routes = [
   {
     path: '',
@@ -14,6 +17,7 @@ export const routes: Routes = [
   {
     path: '',
     component: FullLayoutComponent,
+    canActivate: [AfterLoginService],
     data: {
       title: 'Accueil'
     },
@@ -27,6 +31,7 @@ export const routes: Routes = [
   {
     path: 'page',
     component: AuthLayoutComponent,
+    canActivate: [BeforeLoginService],
     data: {
       title: 'page'
     },
