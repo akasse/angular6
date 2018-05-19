@@ -17,6 +17,7 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
+        "../node_modules/ng-snotify/styles/material.css",
         "scss/style.scss"
       ],
       "scripts": [

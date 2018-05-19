@@ -26,8 +26,6 @@ import { TokenService } from './services';
 import { AuthakService } from './services/authak.service';
 import {SlimLoadingBarModule} from 'ng2-slim-loading-bar';
 
-
-
 @NgModule({
   imports: [
     BrowserModule,
