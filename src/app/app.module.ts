@@ -15,27 +15,46 @@ import { BreadcrumbsComponent } from './shared/breadcrumb.component';
 import { AppRoutingModule } from './app.routing';
 
 //Layouts
-import { FullLayoutComponent } from './layouts/full-layout.component';
+import { FullLayoutComponent } from './layouts/full-layout/full-layout.component';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+//========================Authentification===========================
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { BeforeLoginService, AfterLoginService } from './guard';
+import { TokenService } from './services';
+import { AuthakService } from './services/authak.service';
+import {SlimLoadingBarModule} from 'ng2-slim-loading-bar';
 
 @NgModule({
   imports: [
     BrowserModule,
     AppRoutingModule,
     BsDropdownModule.forRoot(),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    SlimLoadingBarModule.forRoot(),
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
     FullLayoutComponent,
+    AuthLayoutComponent,
     NAV_DROPDOWN_DIRECTIVES,
     BreadcrumbsComponent,
     SIDEBAR_TOGGLE_DIRECTIVES,
-    AsideToggleDirective
+    AsideToggleDirective,
   ],
-  providers: [{
+  providers: [
+    BeforeLoginService,
+    AfterLoginService,
+    TokenService,
+    AuthakService,
+    {
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   }],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

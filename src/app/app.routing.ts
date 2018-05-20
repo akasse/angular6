@@ -2,27 +2,47 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 //Layouts
-import { FullLayoutComponent } from './layouts/full-layout.component';
+import { FullLayoutComponent } from './layouts/full-layout/full-layout.component';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+
+import { BeforeLoginService, AfterLoginService } from './guard';
+
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'page/login',
     pathMatch: 'full',
   },
   {
     path: '',
     component: FullLayoutComponent,
+    canActivate: [AfterLoginService],
     data: {
-      title: 'Home'
+      title: 'Accueil'
     },
     children: [
       {
-        path: 'dashboard',
-        loadChildren: './dashboard/dashboard.module#DashboardModule'
-      },
+        path: '',
+        loadChildren: './accueil/accueil.module#AccueilModule'
+      }
+    ]
+  },
+  {
+    path: 'page',
+    component: AuthLayoutComponent,
+    canActivate: [BeforeLoginService],
+    data: {
+      title: 'page'
+    },
+    children: [
+      {
+        path: '',
+        loadChildren: './auth/auth.module#AuthModule',
+      }
     ]
   }
+
 ];
 
 @NgModule({
