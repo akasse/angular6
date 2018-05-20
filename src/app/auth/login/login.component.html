@@ -1,0 +1,176 @@
+<div class="app flex-row align-items-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card-group mb-0">
+          <div class="card p-2">
+            <div class="card-block">
+              <h1>Login</h1>
+              <p class="text-muted">Authentification</p>
+              <form id="formLogin" (ngSubmit)="onSubmit_login()" [formGroup]="form_login" class="form-horizontal">
+                <div class="input-group mb-1">
+                  <span class="input-group-addon">
+                    <i class="icon-user"></i>
+                  </span>
+                  <input type="text" class="form-control"
+                  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" formControlName="email"
+                  placeholder="Adresse Email" >
+                </div>
+                <div class="input-group mb-2">
+                  <span class="input-group-addon">
+                    <i class="icon-lock"></i>
+                  </span>
+                  <input type="password" class="form-control" formControlName="password" placeholder="Mot de passe">
+                </div>
+                <div>
+                  <span class="help-block">{{error}}</span>
+                </div>
+                <div class="row row hidden-sm-down">
+                  <div class="col-6">
+                    <button type="submit" [disabled]="!form_login.valid"
+                    class="btn btn-primary px-2 btn-ladda" data-style="expand-right" [ladda]='loading' >Login</button>
+                  </div>
+                  <div class="col-6 text-right">
+                    <button type="button" (click)="openmodal(akModalForgotPWD)" class="btn btn-link px-0 link-ak akpointer">Mot de passe oublie?</button>
+                  </div>
+                </div>
+
+                <div class="row hidden-md-up">
+                  <div class="col-12">
+                    <button type="submit"
+                     [disabled]="!form_login.valid"
+                     class="btn  btn-primary btn-ladda"
+                     data-style="expand-right" [ladda]='loading'>Login</button>
+                  </div>
+                  <div class="col-12  ">
+                    <button type="button" (click)="openmodal(akModalForgotPWD)" class="btn btn-link px-0 pointer-ak">Mot de passe oublie?</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="card card-inverse card-primary py-3 hidden-md-down login-ak" style="width:44%">
+            <div class="card-block text-center">
+              <div>
+                <h2>Template de base</h2>
+                <p>Projet Angular5 template de base avec authentification
+                  et Laravel5.6 comme backend sous Docker  </p>
+                <button type="button" (click)="openmodal(register)"
+                class="btn btn-primary active mt-1 akpointer">S'inscrire Maintenat!</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div bsModal #akModalForgotPWD="bs-modal" class="modal fade" data-dismiss="modal" tabindex="-1" role="dialog" aria-labelledby="akModalForgotPWD"
+  aria-hidden="true">
+  <div class="modal-dialog modal-primary" role="document">
+    <div class="modal-content">
+      <div class="card-body">
+        <div class="card-block">
+          <div>
+            <button type="button" class="close" (click)="akModalForgotPWD.hide()" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <h1>Mot de passe oublié</h1>
+          <p class="text-muted">Veuillez renseignez votre adresse mail ?</p>
+
+          <form id="formId1" (ngSubmit)="onSubmit_email(akModalForgotPWD)"
+          [formGroup]="form_email" class="form-horizontal">
+            <div class="input-group mb-1">
+              <span class="input-group-addon">
+                <i class="fa  fa-envelope"></i>
+              </span>
+              <input type="text" class="form-control"
+              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+              placeholder="Email" [ngClass]="getClassInput(form_email,'email')"
+                formControlName="email">
+            </div>
+            <span class="help-block">{{getErrorInput(form_email,'email') }}</span>
+            <button type="submit" [disabled]="!form_email.valid" class="btn btn-block btn-success akpointer">Envoyer</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+<div bsModal #register="bs-modal" class="modal fade" data-dismiss="modal" tabindex="-1" role="dialog" aria-labelledby="register"
+  aria-hidden="true">
+  <div class="modal-dialog modal-primary lg" role="document">
+    <div class="modal-content">
+      <div class="card-body">
+        <div class="card-block">
+
+          <div>
+            <button type="button" class="close" (click)="register.hide()" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <h1>S'inscrire</h1>
+          <p class="text-muted">Création d'un compte</p>
+
+          <form id="register" (ngSubmit)="onSubmit_singUp(register)"
+              [formGroup]="form_singup" class="form-horizontal">
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label" for="name">Nom</label>
+              <div class="col-md-9"
+              [ngClass]="getClassformgroup(form_singup, 'name')">
+                <input type="text" id="name" name="name" class="form-control"
+                 [ngClass]="getClassInput(form_singup,'name') " formControlName="name"
+                  placeholder="name">
+                <span class="help-block">{{getErrorInput(form_singup,'name') }}</span>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label" for="email">Email</label>
+              <div class="col-md-9 " [ngClass]="getClassformgroup(form_singup, 'email')">
+                <input type="text" id="email" name="email" class="form-control" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [ngClass]="getClassInput(form_singup,'email')"
+                  formControlName="email" placeholder="email">
+                <span class="help-block">{{getErrorInput(form_singup,'email') }}</span>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label" for="password">Mot de passe</label>
+              <div class="col-md-9 " [ngClass]="getClassformgroup(form_singup, 'password')">
+                <input type="password" id="password" name="password" class="form-control" [ngClass]="getClassInput(form_singup,'password') "
+                  formControlName="password" placeholder="password">
+                <span class="help-block">{{getErrorInput(form_singup,'password') }}</span>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label" for="confirmPassword">Retapez votre Mot de passe</label>
+              <div class="col-md-9 " [ngClass]="getClassformgroup(form_singup, 'confirmPassword')">
+                <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" [ngClass]="getClassInput(form_singup,'confirmPassword') "
+                  formControlName="confirmPassword" placeholder="confirme Password">
+                <span class="help-block">{{getErrorInput(form_singup,'confirmPassword') }}</span>
+              </div>
+            </div>
+
+            <button type="submit" [disabled]="!form_singup.valid" class="btn btn-block btn-success akpointer">Envoyer</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+<ng-snotify></ng-snotify>
+
