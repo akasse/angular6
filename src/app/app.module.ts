@@ -22,7 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BeforeLoginService, AfterLoginService } from './guard';
-import { TokenService } from './services';
+import { TokenService } from './services/token.service';
 import { AuthakService } from './services/authak.service';
 import {SlimLoadingBarModule} from 'ng2-slim-loading-bar';
 

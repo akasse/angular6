@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {  TokenService } from '../../services';
+import {  TokenService } from '../../services/token.service';
 import { AuthakService } from '../../services/authak.service';
 import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
 

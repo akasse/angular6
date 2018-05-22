@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject'
-import { TokenService } from '.';
+import { TokenService } from './token.service';
 
 @Injectable()
 export class AuthakService {
