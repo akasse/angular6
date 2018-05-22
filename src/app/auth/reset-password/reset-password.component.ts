@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services';
 import { ControlSaisi, Messages, PasswordValidation } from '../../utils';
 import { ResetPassword } from '../../models';
-import {  SnotifyService } from 'ng-snotify';
+import {  SnotifyService, SnotifyPosition } from 'ng-snotify';
 
 @Component({
   selector: 'app-reset-password',
@@ -17,6 +17,7 @@ export class ResetPasswordComponent implements OnInit {
   loading: boolean = false;
   ctrl: ControlSaisi;
   resetPassword:ResetPassword;
+  checkToken:boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -28,7 +29,24 @@ export class ResetPasswordComponent implements OnInit {
     this.resetPassword = new ResetPassword();
 
     route.queryParams.subscribe(params => {
-      this.resetPassword.resetToken = params['token'];
+      let param :string = params['token'];
+
+      if (param && ( param.split('akft').length == 2) ) {
+         this.checkToken = true;
+         this.resetPassword.email = param.split('akft')[1];
+         this.resetPassword.resetToken = param.split('akft')[0];
+       console.log('==========Email===========',this.resetPassword.email);
+       console.log('==========Token===========',this.resetPassword.resetToken);
+      }else{
+        this.checkToken = false;
+        /* this.notify.error('Token ou adresse email invalide','Erreur',
+        {timeout:0, backdrop:0.5, position:SnotifyPosition.centerCenter,
+           showProgressBar:false});
+ */
+        console.log('============Error===========')
+      }
+     // this.resetPassword.resetToken = params['token'];
+     // console.log('token', this.resetPassword.resetToken)
     });
   }
 
@@ -39,11 +57,6 @@ export class ResetPasswordComponent implements OnInit {
 
   getForm_singUp() {
     this.form_singup = this.fb.group({
-      email: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.minLength(4),
-        Validators.maxLength(50)
-      ])),
       password: new FormControl('', Validators.compose([
         Validators.required,
         Validators.minLength(4),
@@ -60,8 +73,6 @@ export class ResetPasswordComponent implements OnInit {
 
   async onSubmit_singUp() {
     console.log(this.form_singup.value);
-
-    this.resetPassword.email = this.form_singup.value.email;
     this.resetPassword.password = this.form_singup.value.password;
     this.resetPassword.password_confirmation = this.form_singup.value.confirmPassword;
     this.notify.info('modification en cours...' ,'Mot de passe',{timeout:5000,backdrop:0.5});
@@ -71,8 +82,11 @@ export class ResetPasswordComponent implements OnInit {
     console.log("====Mot de passe modifier====");
     this.form_singup.reset();
     this.notify.clear();
-    this.notify.confirm('Fait, voulez vous vous connectez avec votre nouveau mot de passe', {
+    this.notify.confirm('Voulez vous vous connectez avec votre nouveau mot de passe','Modification Fait', {
       backdrop:0.5,
+      titleMaxLength:50,
+      bodyMaxLength:200,
+      position: SnotifyPosition.centerCenter,
       buttons:[
         {text: 'OUI',
         action: toster =>{

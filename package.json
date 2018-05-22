@@ -8,7 +8,7 @@
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve -o -p 5000",
     "build": "ng build --prod",
     "prod": "ng build --prod  --aot ",
     "test": "ng test",
