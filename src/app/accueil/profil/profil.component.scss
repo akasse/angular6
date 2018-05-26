@@ -14,7 +14,7 @@ html,body {
 
 header {
   background: #eee;
-  background-image: url("https://image.noelshack.com/fichiers/2017/38/2/1505775648-annapurnafocus.jpg");
+  background-image: url("./profile-bg.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -186,6 +186,24 @@ main {
   box-shadow: 0 0 15px rgba(0,0,0,0.2), 0 0 15px rgba(0,0,0,0.2);
 }
 
+//======== Folow ak=============
+
+.follow-ak {
+  position: absolute;
+  font-size: 11pt;
+  background-color: #42b1fa;
+  color: #fff;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: all .4s;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+.follow-ak:hover {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2), 0 0 15px rgba(0,0,0,0.2);
+}
+
 @media (max-width:990px) {
   .nav {
     display: none;
@@ -194,6 +212,13 @@ main {
   .follow {
     width: 50%;
     margin-left: 25%;
+    display: block;
+    position: unset;
+    text-align: center;
+  }
+
+  .follow-ak {
+    width: 50%;
     display: block;
     position: unset;
     text-align: center;
