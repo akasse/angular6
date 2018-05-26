@@ -25,6 +25,8 @@ import { BeforeLoginService, AfterLoginService } from './guard';
 import { TokenService } from './services/token.service';
 import { AuthakService } from './services/authak.service';
 import {SlimLoadingBarModule} from 'ng2-slim-loading-bar';
+import { ToastDefaults, SnotifyService } from 'ng-snotify';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   imports: [
@@ -51,6 +53,9 @@ import {SlimLoadingBarModule} from 'ng2-slim-loading-bar';
     AfterLoginService,
     TokenService,
     AuthakService,
+    SnotifyService,
+    AuthService,
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
     {
     provide: LocationStrategy,
     useClass: HashLocationStrategy

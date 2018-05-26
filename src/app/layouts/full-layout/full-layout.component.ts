@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {  TokenService } from '../../services/token.service';
 import { AuthakService } from '../../services/authak.service';
 import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
+import { AuthService } from '../../services/auth.service';
+import { User, GetData } from '../../models';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,28 +13,49 @@ import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
 })
 export class FullLayoutComponent implements OnInit {
 
-
   public loggedIn:boolean = false;
-
-
   public disabled:boolean = false;
   public status:{isopen:boolean} = {isopen: false};
+  user : User;
 
   constructor(
     private Auth: AuthakService,
     private router: Router,
-    private Token: TokenService,
+    private authService: AuthService,
     private _loadingBar: SlimLoadingBarService
   ) {
     this._loadingBar.interval = 10;
+
    }
+
+   ngOnInit(): void {
+    this.user = new User();
+    this.Auth.authStatus.subscribe(value => this.loggedIn = value);
+    this.getProfile();
+  }
 
   logout(event: MouseEvent) {
     this.startLoading();
     event.preventDefault();
-    this.Token.remove();
+    this.logout_();
+  }
+
+  logout_() {
+    this.authService.logout();
     this.Auth.changeAuthStatus(false);
     this.router.navigateByUrl('/page/login');
+  }
+
+  async getProfile(){
+    let res = await this.authService.profile();
+     if (res.error == 0) {
+      this.user = res.data;
+      console.log("==Profil==",this.user);
+
+    } else {
+      this.logout_();
+    }
+    console.log(res)
   }
 
   startLoading() {
@@ -50,8 +72,6 @@ export class FullLayoutComponent implements OnInit {
     this._loadingBar.complete();
   }
 
-
-
   public toggled(open:boolean):void {
     console.log('Dropdown is now: ', open);
   }
@@ -62,7 +82,7 @@ export class FullLayoutComponent implements OnInit {
     this.status.isopen = !this.status.isopen;
   }
 
-  ngOnInit(): void {
-    this.Auth.authStatus.subscribe(value => this.loggedIn = value);
-  }
+
+
+
 }

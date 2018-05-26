@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Messages, Prefixe, Api } from '../utils';
-import { Login, User, GetToken, ResetPassword } from '../models/index';
+import { Login, User, GetToken, ResetPassword, GetData } from '../models/index';
 import { TokenService } from './token.service';
 
 @Injectable()
@@ -61,18 +61,16 @@ export class AuthService {
     let res = await  this.http.post(Prefixe.API_URL+Api.PROFILE,
       null, this.getHeader())
     .toPromise()
-    .then((data:GetToken) => {
-      console.log(data);
-      let result : GetToken = data;
-      //this.tokenService.handle(result.access_token);
-      return result;
+    .then((data : GetData<User>) => {
+      return data;
     })
     .catch(err => {
-      let result : GetToken = err;
+      let result : GetData<User> = err;
       return result;
     })
     return res;
   }
+
 
   async resetPassword(resetPassword:ResetPassword) {
     let res = await  this.http.post(Prefixe.API_URL+Api.RESET_PASSWORD,resetPassword)
@@ -98,6 +96,10 @@ export class AuthService {
     );
 
     return { headers };
+  }
+
+  logout(){
+    this.tokenService.remove();
   }
 
 
