@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import * as $ from 'jquery';
 @Component({
   selector: 'app-profil',
   templateUrl: './profil.component.html',
@@ -9,7 +9,17 @@ export class ProfilComponent implements OnInit {
 
   constructor() { }
 
+
+
   ngOnInit() {
+
+
+
+  $(document).ready(function(){
+    alert('akasse');
+
+  });
+
   }
 
 }

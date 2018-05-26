@@ -11,7 +11,7 @@
         <li class="nav-item dropdown" dropdown placement="bottom right">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle>
                 <img src="../../../assets/img/avatars/1.jpg" class="img-avatar" alt="akasse005@gmail.com">
-                <span class="hidden-md-down">alioune&nbsp;&nbsp;kasse</span>
+                <span class="hidden-md-down">{{user.name}}&nbsp;&nbsp;</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
                 <a class="dropdown-item" (click)="startLoading()"  [routerLink]="['/profile']"><i class="fa fa-user"></i> Profile </a>

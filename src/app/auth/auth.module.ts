@@ -12,9 +12,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AuthakService } from '../services/authak.service';
-import { AuthService, TokenService } from '../services';
+import { TokenService } from '../services/token.service';
 import { LaddaModule } from 'angular2-ladda';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+import { AuthService } from '../services/auth.service';
 @NgModule({
   imports: [
     CommonModule,

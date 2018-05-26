@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthService } from '../../services';
+import { AuthService } from '../../services/auth.service';
 import { ControlSaisi, Messages, PasswordValidation } from '../../utils';
 import { ResetPassword } from '../../models';
 import {  SnotifyService, SnotifyPosition } from 'ng-snotify';

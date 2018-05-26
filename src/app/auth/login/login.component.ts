@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService, TokenService } from '../../services/index';
+import { AuthService } from '../../services/auth.service';
 import { Login, User } from '../../models';
 import { ControlSaisi, PasswordValidation, Messages } from '../../utils';
 import { ModalDirective } from 'ngx-bootstrap/modal';
@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder, private router: Router,
-    private tokenService: TokenService,
     private authService: AuthService,
     private authakService: AuthakService,
     private notify: SnotifyService) {
@@ -75,7 +74,7 @@ export class LoginComponent implements OnInit {
   }
 
   handleResponse(token: string) {
-    this.tokenService.handle(token);
+   // this.tokenService.handle(token);
     this.authakService.changeAuthStatus(true);
     this.router.navigateByUrl('/dashboard');
   }
