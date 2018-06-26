@@ -7,8 +7,20 @@ import { TokenService } from '../services/token.service';
 export class BeforeLoginService implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
-    return !this.Token.loggedIn();
+    console.log('==r===',route.url);
+    console.log('=====1====',state.url);
+    let bool = this.token.loggedIn();
+    if (bool) {
+      this.token.getRouter(state.url);
+    }
+    return !bool;
   }
-  constructor(private Token: TokenService) { }
+  constructor(private token: TokenService) {
+    console.log('====VALID TOKEB====',this.token.isValid());
+
+
+
+
+   }
 
 }

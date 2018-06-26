@@ -28,9 +28,13 @@ import {SlimLoadingBarModule} from 'ng2-slim-loading-bar';
 import { ToastDefaults, SnotifyService } from 'ng-snotify';
 import { AuthService } from './services/auth.service';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 @NgModule({
   imports: [
     BrowserModule,
+    NgxChartsModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),

@@ -8,7 +8,7 @@
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
-    "start": "ng serve -o -p 5000",
+    "start": "ng serve -o -p 4000",
     "build": "ng build --prod",
     "prod": "ng build --prod  --aot ",
     "test": "ng test",
@@ -38,7 +38,7 @@
     "@ctrl/ngx-csv": "^1.1.2",
     "@elderbyte/ngx-jwt-auth": "^5.5.0",
     "@nicky-lenaers/ngx-scroll-to": "^0.3.1",
-    "@swimlane/ngx-charts": "^8.0.0",
+    "@swimlane/ngx-charts": "^7.0.2",
     "@swimlane/ngx-datatable": "^9.3.1",
     "@types/googlemaps": "^3.26.17",
     "agm-direction": "^0.2.2",

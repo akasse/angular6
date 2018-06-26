@@ -1,4 +1,5 @@
 export class User {
+
   name:string;
   email:string;
   password:string;
@@ -6,6 +7,7 @@ export class User {
   at?:string;
   roles: Role[];
   constructor(){
+    this.roles = [];
     this.email = '';
     this.name = '';
     this.password = '';
@@ -13,8 +15,24 @@ export class User {
   }
 }
 
+export class ChangePassWord {
+
+  email:string;
+  password:string;
+  newpassword:string;
+
+  constructor(){
+    this.email = '';
+    this.password = '';
+    this.newpassword = '';
+  }
+}
+
 export class Role {
   nom:string
+  constructor(){
+    this.nom = '';
+  }
 }
 
 export class GetUser {
