@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Messages, Prefixe, Api } from '../utils';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class TokenService {
@@ -8,7 +9,7 @@ export class TokenService {
     signup: Prefixe.API_URL+Api.SINGUP
   };
 
-  constructor() { }
+  constructor(public router:Router) { }
 
   handle(token:string) {
     this.set(token);
@@ -38,14 +39,49 @@ export class TokenService {
 
   payload(token:string) {
     const payload = token.split('.')[1];
-    return this.decode(payload);
+    if (payload) {
+      console.log('ok');
+      return this.decode(payload);
+    } else {
+      console.log('no');
+      return null;
+    }
   }
 
   decode(payload:string) {
-    return JSON.parse(atob(payload));
+    console.log('de',payload);
+    try {
+      let result = atob(payload);
+      console.log('========',result);
+
+      let res = JSON.parse(result);
+      console.log('====ok bon====');
+      return res ;
+    } catch (error) {
+      console.log('====ok error====',error);
+      return null;
+    }
+
+   /*  if (res) {
+      console.log('====ok bon====');
+
+      return res ;
+    } else {
+      console.log('===error=p==');
+
+      return null;
+    } */
   }
 
   loggedIn() {
     return this.isValid();
+  }
+
+  //========
+
+  getRouter(url:string){
+    if (url === '/page/login') {
+    this.router.navigateByUrl('/dashboard');
+    }
   }
 }

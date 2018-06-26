@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Messages, Prefixe, Api } from '../utils';
-import { Login, User, GetToken, ResetPassword, GetData } from '../models/index';
+import { Login, User, GetToken, ResetPassword, GetData, ChangePassWord } from '../models/index';
 import { TokenService } from './token.service';
 
 @Injectable()
@@ -87,6 +87,21 @@ export class AuthService {
     return res;
   }
 
+  async changePassword(changePassWord:ChangePassWord) {
+    let res = await  this.http.post(Prefixe.API_URL+Api.CHANGE_PASSWORD,changePassWord,this.getHeader())
+    .toPromise()
+    .then((data:GetToken) => {
+      console.log(data);
+      let result : GetToken = data;
+      return result;
+    })
+    .catch(err => {
+      let result : GetToken = err;
+      return result;
+    })
+    return res;
+  }
+
   getHeader(){
     let headers =  new HttpHeaders(
       {
@@ -94,7 +109,6 @@ export class AuthService {
         'Authorization': 'Bearer ' + this.tokenService.get()
       }
     );
-
     return { headers };
   }
 

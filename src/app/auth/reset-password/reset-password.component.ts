@@ -5,6 +5,7 @@ import { AuthService } from '../../services/auth.service';
 import { ControlSaisi, Messages, PasswordValidation } from '../../utils';
 import { ResetPassword } from '../../models';
 import {  SnotifyService, SnotifyPosition } from 'ng-snotify';
+import { TokenService } from '../../services/token.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -24,10 +25,13 @@ export class ResetPasswordComponent implements OnInit {
     private route:ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private notify: SnotifyService
+    private notify: SnotifyService,
+    private tokenService:TokenService
   ) {
-    this.resetPassword = new ResetPassword();
+    console.log('=======reset=====');
 
+    this.resetPassword = new ResetPassword();
+    this.tokenService.remove();
     route.queryParams.subscribe(params => {
       let param :string = params['token'];
 
