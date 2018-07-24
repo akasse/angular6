@@ -50,3 +50,24 @@ export class GetUser {
     this.message = '';
   }
 }
+
+
+export class Utilisateur {
+  id?: number;
+  firstname: string;
+  lastname: string;
+  email: string;
+  status?: number;
+  password: string;
+  number: string;
+  sexe?: string;
+
+  constructor() {
+    this.firstname = '';
+    this.lastname = '';
+    this.email = '';
+    this.password = '';
+    this.number = '';
+    this.sexe ='';
+  }
+}

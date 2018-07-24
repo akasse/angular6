@@ -1,5 +1,7 @@
+$footer-height_ak: 50px;
+
 .app-footer {
-  min-height: $footer-height;
+  min-height: $footer-height_ak;
   padding: 0 $spacer-x;
   line-height: $footer-height;
   color: $footer-color;

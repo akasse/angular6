@@ -17,7 +17,14 @@ export interface GetDataImpl<T> {
   error:number;
   message:string;
   user :  T;
-
-
 }
+
+
+
+export interface ConditionUse{
+  id: number,
+  val:boolean;
+  text: string
+}
+
 

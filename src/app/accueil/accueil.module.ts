@@ -9,6 +9,8 @@ import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ngfModule } from "angular-file"
+import { SimpleDemoComponent } from './file-upload/simple-demo.component';
 
 @NgModule({
   imports: [
@@ -17,11 +19,12 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     AccueilRoutingModule,
     ModalModule.forRoot(),
     FormsModule,ReactiveFormsModule,
-    SnotifyModule
+    SnotifyModule,
+    ngfModule
   ],
   providers: [
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
     SnotifyService, AuthService],
-  declarations: [ DashboardComponent,ProfilComponent ]
+  declarations: [ DashboardComponent,ProfilComponent, SimpleDemoComponent ]
 })
 export class AccueilModule { }

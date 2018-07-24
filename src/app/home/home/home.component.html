@@ -1,0 +1,399 @@
+<br>
+<br>
+
+<div class="card  ak-card-entete">
+  <div class=" ak-card-block">
+    <carousel>
+      <slide>
+        <img src="assets/img/avatars/ban1.jpg" alt="First slide" style="display: block; height: 200px; width: 100%; ">
+
+        <div class="carousel-caption">
+          <a [routerLink]="['/inscription-agent']" class="btn  btn-outline-secondary-ak"> S'INSCRIRE </a>
+        </div>
+        <div class="carousel-caption hidden-sm-up">
+          <a [routerLink]="['/inscription-agent']" class="btn  btn-outline-secondary-ak"> S'INSCRIRE </a>
+        </div>
+      </slide>
+      <slide>
+        <img src="assets/img/avatars/ban2.jpg" alt="Second slide" style="display: block; height: 200px; width: 100%;">
+        <div class="carousel-caption">
+          <a [routerLink]="['/inscription-expeditaire']" class="btn btn-outline-primary"> S'INSCRIRE </a>
+        </div>
+      </slide>
+      <slide>
+        <img src="assets/img/avatars/ban3.jpg" alt="Third slide" style="display: block; height: 200px; width: 100%;">
+        <div class="carousel-caption">
+          <a [routerLink]="['/inscription-transporteur']" class="btn btn-outline-secondary-ak"> S'INSCRIRE </a>
+        </div>
+      </slide>
+      <slide>
+        <img src="assets/img/avatars/ban4.jpg" alt="Third slide" style="display: block; height: 200px; width: 100%;">
+        <div class="carousel-caption">
+          <a [routerLink]="['/inscription-agent']" class="btn btn-outline-primary"> S'INSCRIRE </a>
+        </div>
+      </slide>
+    </carousel>
+  </div>
+</div>
+
+
+
+<div class="animated fadeIn akmain">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-12">
+
+
+
+        <div class="ary ak-card hidden-md-up">
+
+          <div class="ak-select-type-voyage">
+
+            <div class="btn-group ak-btn-group ">
+              <label class="btn btn-primary ak-label-xs" [(ngModel)]="radioModel" btnRadio="bateau" tabindex="0" role="button">
+                <i class="fa fa-ship"></i></label>
+              <label class="btn btn-primary ak-label-xs" [(ngModel)]="radioModel" btnRadio="bus" tabindex="0" role="button">
+                <i class="fa fa-bus"></i></label>
+              <label class="btn btn-primary ak-label-xs" [(ngModel)]="radioModel" btnRadio="voirure" tabindex="0" role="button">
+                <i class="fa fa-car"></i></label>
+              <label class="btn btn-primary ak-label-xs" [(ngModel)]="radioModel" btnRadio="vol" tabindex="0" role="button">
+                <i class="fa fa-plane"></i></label>
+              <label class="btn btn-primary ak-label-xs" [(ngModel)]="radioModel" btnRadio="train" tabindex="0" role="button">
+                <i class="fa fa-subway"></i></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="ary ak-card hidden-sm-down">
+          <div class="ak-select-type-voyage">
+            <div class="btn-group ak-btn-group ">
+              <label class="btn btn-primary ak-label" [(ngModel)]="radioModel" btnRadio="bateau" tabindex="0" role="button">
+                <i class="fa fa-ship"></i> Bateau</label>
+              <label class="btn btn-primary ak-label" [(ngModel)]="radioModel" btnRadio="bus" tabindex="0" role="button">
+                <i class="fa fa-bus"></i> Bus</label>
+              <label class="btn btn-primary ak-label" [(ngModel)]="radioModel" btnRadio="voirure" tabindex="0" role="button">
+                <i class="fa fa-car"></i> Voiture</label>
+              <label class="btn btn-primary ak-label" [(ngModel)]="radioModel" btnRadio="vol" tabindex="0" role="button">
+                <i class="fa fa-plane"></i> Vol</label>
+              <label class="btn btn-primary ak-label" [(ngModel)]="radioModel" btnRadio="train" tabindex="0" role="button">
+                <i class="fa fa-subway"></i> Train</label>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-12">
+
+        <div class="card  card-accent-primary ak-card">
+          <div class="card-block ak-card-block">
+
+            <div class="row flex-sm-row">
+              <div class="col-md-12">
+                <label class="col-xs-6  col-md-4 " for="aller">
+                  <input class="ak-radio " type="radio" name="mode" [value]="true" [(ngModel)]="sens">
+                  <span class="ak-radio-span">Aller Simple</span>
+                </label>
+                <label class="col-xs-6 col-md-4 " for="retour">
+                  <input class="ak-radio" type="radio" name="mode" [value]="false" [(ngModel)]="sens">
+                  <span class="ak-radio-span">Aller-Retour</span>
+                </label>
+              </div>
+              <div class="col-sm-8 col-md-6  hidden-md-up">
+                  <div class="row flex-sm-row ">
+                    <div class="col-md-12">
+                      <div class="form-group row">
+                        <div class="col-md-12 ">
+                            <ngx-select [allowClear]="true"
+                            [items]="adresses"
+                            [(ngModel)]="ngxValue"
+                            (select)="selectTest($event)"
+                            optionValueField="id" optionTextField="text"
+                            optGroupLabelField="text" optGroupOptionsField="children"
+                            placeholder="Région, département, commune, localité ">
+                </ngx-select>
+
+
+                         <!--  <input type="text" id="depart" name="depart" class="form-control ak-adresse-xs" placeholder="Région, département, commune, commune d'arrondissement ">
+                        -->
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group row">
+                        <div class="col-md-12 ">
+                      <!--     <input type="text" id="arrivee" name="arrivee" class="form-control ak-adresse-xs" placeholder="Région, département, commune, commune d'arrondissement ">
+                       -->
+                       <ngx-select [allowClear]="true"
+                          [items]="adresses"
+                          [(ngModel)]="ngxValue2"
+                          (select)="selectTest($event)"
+                          optionValueField="id" optionTextField="text"
+                          optGroupLabelField="text" optGroupOptionsField="children"
+                          placeholder="Région, département, commune, localité ">
+              </ngx-select>
+
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-6 hidden-md-up">
+                  <fieldset>
+                    <div>
+                      <div class="row">
+                        <div class=" col-sm-6 col-md-6">
+                          <div class="input-group ak-input-grph">
+                            <label for="" class="ak-label-heure-xs">Aller :</label>
+                            <input class="form-control ak-input-heure-xs" placeholder="Aller" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig" />
+                            <span class="ak-btn-input-h btn-outline-primary">
+                              <i class="fa fa-calendar"></i>
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+
+                          <div class="ak-div-h">
+                            <label for="" class="ak-label-heure-xs">A partir de :</label>
+                            <select class="ak-select-xs" [(ngModel)]="selectHeureDepart" (change)="onSelectHeures($event)">
+                              <option [ngValue]="null" disabled>Heure de départ</option>
+                              <option *ngFor="let h of heures" [ngValue]="h">{{h.name}}H</option>
+                            </select>
+                            <span class="ak-btn-input-h ak-color">
+                              <i class="fa fa-clock-o"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row ">
+
+                        <div class=" col-sm-6 col-md-6">
+                          <div class="input-group ak-input-grph  ak-marge-input">
+                            <label for="" class="ak-label-heure-xs">Retour :</label>
+                            <input class="form-control ak-input-heure-xs" placeholder="Retour" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig" />
+                            <span class="ak-btn-input-h btn-outline-primary">
+                              <i class="fa fa-calendar"></i>
+                            </span>
+                          </div>
+                        </div>
+
+                        <div class=" col-sm-6 col-md-6 ">
+                          <div class="ak-div-h ak-marge-input">
+                            <label for="" class="ak-label-heure-xs">A partir de :</label>
+                            <select class="ak-select-xs" [(ngModel)]="selectHeureArrivee" (change)="onSelectHeures($event)">
+
+                              <option [ngValue]="null" disabled>Heure d'arrivée</option>
+
+                              <option *ngFor="let h of heures" [ngValue]="h.name">{{h.name}}H</option>
+                            </select>
+                            <span class="ak-btn-input-h ak-color">
+                              <i class="fa fa-clock-o"></i>
+                            </span>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+                  </fieldset>
+                </div>
+
+              <div class="col-sm-8 col-md-6  hidden-sm-down">
+                <div class="row flex-sm-row ak-row-field">
+                  <div class="col-md-12">
+                    <div class="form-group row">
+                      <div class="col-md-12 ak-adresse">
+                          <ngx-select [allowClear]="true"
+                          [items]="adresses"
+                          [(ngModel)]="ngxValue"
+                          (select)="selectTest($event)"
+                          optionValueField="id" optionTextField="text"
+                          optGroupLabelField="text" optGroupOptionsField="children"
+                          placeholder="Région, département, commune, localité ">
+              </ngx-select>
+                      <!--   <input type="text" id="depart" name="depart" class="form-control ak-adresse" placeholder="Région, département, commune, commune d'arrondissement ">
+                       --></div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group row">
+                      <div class="col-md-12 ak-adresse">
+                          <ngx-select [allowClear]="true"
+                          [items]="adresses"
+                          [(ngModel)]="ngxValue2"
+                          (select)="selectTest($event)"
+                          optionValueField="id" optionTextField="text"
+                          optGroupLabelField="text" optGroupOptionsField="children"
+                          placeholder="Région, département, commune,localité">
+              </ngx-select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6 hidden-sm-down ">
+                <fieldset>
+                  <div>
+                    <div class="row">
+                      <div class=" col-sm-6 col-md-6">
+                        <div class="input-group ak-input-grph">
+                          <label for="" class="ak-label-heure">Aller :</label>
+                          <input class="form-control ak-input-heure" placeholder="Aller" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig" />
+                          <span class="ak-btn-input-h btn-outline-primary">
+                            <i class="fa fa-calendar"></i>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-md-6">
+
+                        <div class="ak-div-h">
+                          <label for="" class="ak-label-h">A partir de :</label>
+                          <select class="ak-select" [(ngModel)]="selectHeureDepart" (change)="onSelectHeures($event)">
+                            <option [ngValue]="null" disabled>Heure de départ</option>
+                            <option *ngFor="let h of heures" [ngValue]="h">{{h.name}}H</option>
+                          </select>
+                          <span class="ak-btn-input-h ak-color">
+                            <i class="fa fa-clock-o"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row ">
+
+                      <div class=" col-sm-6 col-md-6">
+                        <div class="input-group ak-input-grph  ak-marge-input">
+                          <label for="" class="ak-label-heure">Retour :</label>
+                          <input class="form-control ak-input-heure" placeholder="Retour" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig" />
+                          <span class="ak-btn-input-h btn-outline-primary">
+                            <i class="fa fa-calendar"></i>
+                          </span>
+                        </div>
+                      </div>
+
+                      <div class=" col-sm-6 col-md-6 ">
+                        <div class="ak-div-h ak-marge-input">
+                          <label for="" class="ak-label-h">A partir de :</label>
+                          <select class="ak-select" [(ngModel)]="selectHeureArrivee" (change)="onSelectHeures($event)">
+
+                            <option [ngValue]="null" disabled>Heure d'arrivée</option>
+
+                            <option *ngFor="let h of heures" [ngValue]="h.name">{{h.name}}H</option>
+                          </select>
+                          <span class="ak-btn-input-h ak-color">
+                            <i class="fa fa-clock-o"></i>
+                          </span>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                </fieldset>
+              </div>
+
+              <div class="col-md-12">
+
+                <accordion [closeOthers]="oneAtATime">
+                  <accordion-group #group (isOpenChange)="open($event)">
+                    <div accordion-heading>
+                      Plus Détails
+                      <span class="float-right pull-right accordak">
+                        <i class=" fa fa-angle-down ak-size-icon "></i>&nbsp;</span>
+                    </div>
+                    <div>
+                      <hr>
+                      <div class="form-group row">
+                        <div class="col-md-12 form-control-label">
+                          Nombre de voyageurs&nbsp;&nbsp;
+                          <button class="btn btn-primary ak-btn-add-voyage
+                            ak-btn-add-vcna" (click)="nbVoyageur(0)">
+                            <i class="fa fa-minus"></i>
+                          </button>
+                          <input class="ak-btn-add-voyage-input" type="text" [value]="nb_voyageur">
+                          <button class="btn btn-primary
+                            ak-btn-add-voyage ak-btn-add-vca" (click)="nbVoyageur(1)">
+                            <i class="fa fa-plus"></i>
+                          </button>
+                        </div>
+                      </div>
+
+                      <div>
+                        <ul *ngFor="let item of nombreVoyageurs ;let i = index">
+
+                          <li class="ak-li-vg-xs hidden-md-up">
+                            <form id="formId1" class="form-horizontal">
+                              <div class="col-sm-12">
+                                <div class="form-group row">
+                                  <div class="col-md-3 hidden-md-up">
+                                    <label class=" form-control-label ak-li-label" for="voyageur">VOYAGEUR {{i+1}}
+                                    </label>
+                                    <button *ngIf="i != 0" class="btn btn-outline-primary ak-li-btn-xs " (click)="remove(item)">
+                                      <i class="fa fa-close"></i>
+                                    </button>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <select class="form-control ak-li-select" (change)="onSelecAge($event.target.value,item)">
+                                      <option [ngValue]="25-59" value="25-59" [selected]="true">25-59 ans</option>
+                                      <option *ngFor="let age of selectAges" [value]="age.trasAge">{{age.trasAge}}</option>
+                                    </select>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <input type="text" name="bon" class="form-control ak-li-input" placeholder="Code avantage ou Bon d'achat">
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </li>
+
+                          <li class="ak-li-vg hidden-sm-down">
+                            <form id="formId2" class="form-horizontal">
+                              <div class="col-sm-12">
+                                <div class="form-group row">
+                                  <label class="col-md-3 form-control-label ak-li-label" for="voyageur0">VOYAGEUR {{i+1}}
+                                  </label>
+                                  <div class="col-md-3">
+                                    <select class="form-control ak-li-select" (change)="onSelecAge($event.target.value,item)">
+                                      <option [ngValue]="25-59" value="25-59" [selected]="'25-59'">25-59 ans</option>
+
+                                      <option *ngFor="let age of selectAges" [value]="age.trasAge">{{age.trasAge}} ans</option>
+                                    </select>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <input type="text" name="bon0" class="form-control ak-li-input" placeholder="Code avantage ou Bon d'achat">
+                                  </div>
+                                  <div class="col-md-3 " *ngIf="i != 0">
+                                    <button class="btn btn-outline-primary ak-li-btn " (click)="remove(item)">
+                                      <i class="fa fa-close"></i>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </accordion-group>
+                </accordion>
+              </div>
+
+              <div class="ak-center">
+                <button class="btn btn-primary ak-recherche" (click)="recherche()"> Recherche</button>
+              </div>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </div>
+      <div class="col-12">
+        <div class="card-group">
+          <list-voyages></list-voyages>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,104 @@
+<ng2-slim-loading-bar color="#bb890f" height="2px"   ></ng2-slim-loading-bar>
+
+<header class="app-header navbar ak-header">
+  <button class="navbar-toggler mobile-sidebar-toggler hidden-lg-up" type="button">&#9776;</button>
+  <a class="navbar-brand" href="#"></a>
+
+  <ul class="nav navbar-nav hidden-md-down">
+    <li class="nav-item hidden-lg-up">
+      <a class="nav-link navbar-toggler sidebar-toggler" href="#">&#9776;</a>
+    </li>
+    <ul class="nav navbar-nav hidden-md-down">
+
+      <li class="nav-item px-1">
+        <a class="nav-link nav-link-ak" routerLinkActive="active" (click)="startLoading()" [routerLink]="['/accueil']">ACCUEIL</a>
+      </li>
+
+
+    </ul>
+  </ul>
+  <ul class="nav navbar-nav ml-auto hidden-md-up">
+    <li class="nav-item px-1">
+      <a  (click)="startLoading()" [routerLink]="['/home']" >
+        <img src="assets/img/avatars/user.png" class="img-avatar">
+      </a>
+    </li>
+  </ul>
+  <ul class="nav navbar-nav ml-auto hidden-sm-down">
+    <li class="nav-item px-1">
+      <a (click)="startLoading()" [routerLink]="['/authentification']">
+        <img src="assets/img/avatars/user.png" class="img-avatar">
+      </a>
+    </li>
+    <li class="nav-item dropdown hidden-sm-down hidden-xs-down hidden-md-down" dropdown placement="bottom right">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle>
+        <span class="hidden-md-down">INSCRIPTION</span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right"
+       *dropdownMenu aria-labelledby="simple-dropdown">
+        <a class="dropdown-item pointer-ak titreac" (click)="startLoading()" [routerLink]="['/inscription-fournisseur']">
+          <i class="fa fa-home"></i>&nbsp;&nbsp; FOURNISEUR</a>
+        <div class="divider"></div>
+        <a class="dropdown-item pointer-ak titreac" (click)="startLoading()" [routerLink]="['/inscription-voyageur']">
+          <i class="fa fa-user"></i>&nbsp;&nbsp; VOYAGEUR</a>
+        <div class="divider"></div>
+
+      </div>
+    </li>
+    <li class="nav-item hidden-md-down">
+    </li>
+  </ul>
+
+</header>
+
+
+<div class="app-body">
+  <div class="sidebar hidden-lg-up">
+    <nav class="sidebar-nav ak-nav-sidebar">
+      <ul class="nav">
+        <li class="nav-title">
+          YOBANTE EXPRESS
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" (click)="startLoading()" [routerLink]="['/accueil']">
+            <i class="icon-home" ></i> ACCUEIL </a>
+        </li>
+
+
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" (click)="startLoading()" [routerLink]="['/inscription-fournisseur']">
+            <i class="fa fa-vcard"></i>  FOURNISEUR</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" (click)="startLoading()" [routerLink]="['/inscription-voyageur']">
+            <i class="fa fa-truck"></i>  VOYAGEUR</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" (click)="startLoading()" [routerLink]="['/authentification']">
+            <i class="fa fa-truck"></i>  SE CONNECTER</a>
+        </li>
+
+
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Main content -->
+  <main class="main">
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+    <!-- /.conainer-fluid -->
+  </main>
+
+</div>
+
+<footer class="app-footer">
+    <a href="https://genesisui.com">OKANI</a> &copy; 2017 OKANI.
+    <span class="float-right">Powered by <a href="https://genesisui.com">NANO AIR</a>
+    </span>
+</footer>
+
+

@@ -1,0 +1,253 @@
+
+
+<div class="animated fadeIn akmain">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="card  card-accent-primary ">
+          <div class="card-block ak-card" >
+              <h3 class="text-muted" >Création un nouveau  compte Voyageur</h3>
+              <hr>
+              <form id="formId1" (ngSubmit)="onSubmitVoyageur()"
+              [formGroup]="form_voyageur" class="form-horizontal">
+                  <div class="col-sm-12">
+
+                    <div class="card-block">
+                      <div class="form-group row">
+                          <label class="col-md-4 form-control-label" for="firstname">Prénom</label>
+                          <div class="col-md-8 " [ngClass]="getClassformgroup(form_voyageur, 'firstname')">
+                              <input type="text" id="firstname" name="firstname" class="form-control"
+                              [ngClass]="getClassInput(form_voyageur,'firstname') " formControlName="firstname"
+                               placeholder="Prénom">
+                              <span class="help-block">{{getErrorInput(form_voyageur,'firstname') }}</span>
+                          </div>
+                      </div>
+
+                      <div class="form-group row">
+                          <label class="col-md-4 form-control-label" for="lastname">Nom</label>
+                          <div class="col-md-8 " [ngClass]="getClassformgroup(form_voyageur, 'lastname')">
+                              <input type="text" id="lastname" name="lastname" class="form-control"
+                              [ngClass]="getClassInput(form_voyageur,'lastname') " formControlName="lastname"
+                               placeholder="Nom">
+                              <span class="help-block">{{getErrorInput(form_voyageur,'lastname') }}</span>
+                          </div>
+                      </div>
+
+
+                      <div class="form-group row">
+                          <label class="col-md-4 form-control-label" for="email">Email</label>
+                          <div class="col-md-8 " [ngClass]="getClassformgroup(form_voyageur, 'email')">
+                              <input type="text" id="email" name="email" class="form-control" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [ngClass]="getClassInput(form_voyageur,'email')" formControlName="email" placeholder="email">
+                              <span class="help-block">{{getErrorInput(form_voyageur,'email') }}</span>
+                          </div>
+                      </div>
+
+                      <div class="form-group row">
+                          <label class="col-md-4 form-control-label" for="number">Téléphone</label>
+                          <div class="col-md-8 " [ngClass]="getClassformgroup(form_voyageur, 'number')">
+                              <input type="text" id="number" name="number" class="form-control"
+                              mask="00-000-00-00" [ngClass]="getClassInput(form_voyageur,'number')" formControlName="number" placeholder="ex.77-151-92-30">
+                              <span class="help-block">{{getErrorInput(form_voyageur,'number') }}</span>
+                          </div>
+                      </div>
+
+                      <div class="form-group row">
+                          <label class="col-md-4 form-control-label" for="password">Mot de passe</label>
+                          <div class="col-md-8 " [ngClass]="getClassformgroup(form_voyageur, 'password')">
+                              <input type="password" id="password" name="password" class="form-control" [ngClass]="getClassInput(form_voyageur,'password') " formControlName="password" placeholder="password">
+                              <span class="help-block">{{getErrorInput(form_voyageur,'password') }}</span>
+                          </div>
+                      </div>
+
+                      <div class="form-group row">
+                          <label class="col-md-4 form-control-label" for="confirmPassword">Retapez votre Mot de passe</label>
+                          <div class="col-md-8 " [ngClass]="getClassformgroup(form_voyageur, 'confirmPassword')">
+                              <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" [ngClass]="getClassInput(form_voyageur,'confirmPassword') " formControlName="confirmPassword" placeholder="confirme Password">
+                              <span class="help-block">{{getErrorInput(form_voyageur,'confirmPassword') }}</span>
+                          </div>
+                      </div>
+                  </div>
+
+                  </div>
+                  <div class="col-sm-12 col-md-12">
+                    <div class="card card-accent-primary">
+                        <div class="card-header">
+                            Condition
+                        </div>
+
+                        <div class="card-block">
+                             <div class="form-group row">
+                                <re-captcha formControlName="recaptchaReactive" siteKey="6LcXejkUAAAAAHo2feUXSF0x3VT7D4fSwYZxK5n9"></re-captcha>
+                            </div>
+
+                            <div class="form-group row">
+                                <label *ngFor="let c of cond; let idx = index" class="radio-inline" for="inline-radio1">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="radio" id="{{c.id}}" name="cond"
+                                    [checked]="idx === 0"
+                                    [value]="c.val" (change)="onChangeCondition(c)"
+                                     formControlName="cond">
+                                    <span class="float-right">&nbsp;&nbsp;&nbsp;{{ c.text }}</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" (click)="openmodal(akModal)" class="btn btn-outline-primary btn-sm align-content-sm-center">
+                            <i class="fa fa-eye"></i>&nbsp;Voir conditions</button>
+                        </div>
+
+                    </div>
+
+                </div>
+                  <div class=" modal-footer btn-group">
+                      <button type="submit" class="btn btn-outline-primary btn-sm"
+                       [disabled]="!form_voyageur.valid" ><i class="fa fa-chevron-circle-right"></i>&nbsp;VALIDER</button>
+                  </div>
+              </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div bsModal #akModal="bs-modal" class="modal fade" data-dismiss="modal" tabindex="-1" role="dialog" aria-labelledby="akModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-primary" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title"> Conditions Générales d'Utilisation des services de YOBANTE EXPRESS</h4>
+              <button type="button" class="close" (click)="akModal.hide()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <div class="card-block text-center ">
+
+                  <p>
+                      Cette Charte définie les conditions générales d’Utilisation des services de YOBANTE EXPRESS conformément à la législation sénégalaise en vigueur (notamment le Code des obligations civiles et commerciales(COCC) ainsi que les Conventions et Traités ratifiés par le Sénégal). Elle définit également les modalités d’utilisation de la plateforme conformément au respect de l’ordre public et des bonnes mœurs ainsi que de la vie privée des utilisateurs et partenaires.
+                      Ces stipulations ont pour objet de définir les conditions générales d'utilisation de Yobanté Express. Elles présentent les droits et obligations des utilisateurs, et constituent le Contrat qui les lie à la société Yobanté Express.
+                      L'utilisation des services Yobanté Express est réservée aux Utilisateurs qui ont préalablement pris connaissance et accepté sans réserve ces Conditions d'utilisation.
+                       Yobanté Express se réserve le droit de modifier à tout moment les termes de la présente charte.
+                  </p>
+                  <p>1. Définitions</p>
+                  <p>
+                      Dans le cadre des présentes Conditions d'utilisation, les termes et expressions identifiés par une majuscule ont la signification indiquée ci-après, qu'ils soient employés au singulier ou au pluriel :
+
+                          « Conditions d'utilisation » désigne les présents termes et conditions générales d'utilisation du site Yobanté Express.
+                          « Lettre de voiture » désigne l’écrit qui constate le contrat de transport du colis.
+                      « Expéditeur » réfère à la personne qui fait l’envoi.
+                      « Destinataire » est celui qui est chargé de la réception finale du colis.
+                      « Transporteur » désigne toute personne régulièrement inscrite sur la plateforme et chargée d’amener en devers lui un ou plusieurs colis déterminés.
+                       « Utilisateur inscrit » désigne toute personne ayant créé un compte sur Yobanté Express, soit en respectant la procédure d'inscription en ligne décrite ci-après, soit en s'inscrivant directement.
+                      2. Consentement, capacité, objet et cause
+                      Le cocontractant  s'engage à respecter ces Conditions d'utilisation tout au long de son utilisation du Service. En cas de désaccord avec ces termes et conditions  la personne physique ou morale  ne doit pas utiliser le Service.
+                      L'Utilisateur déclare avoir la capacité pour contracter, conformément aux dispositions de la législation sénégalaise. L'Utilisateur mineur ou majeur incapable garantit avoir reçu l'autorisation expresse de son tuteur ou  curateur.
+                       Dans le cas où l'Utilisateur agirait au nom et pour le compte d’une autre personne physique ou morale, il garantit avoir reçu la délégation et le pouvoir nécessaire à un tel engagement.
+                      L’objet et la cause du contrat est le transport de marchandises, de documents, et autres types de colis à l’intérieur du Sénégal conformément aux lois et règlements en vigueur sur le territoire national.
+                      3. Responsabilité et obligations de l’expéditeur
+                      L’expéditeur fournit au transporteur les informations et les instructions qui doivent figurer sur la lettre de voiture.
+                      Obligation de réparation
+                      L’expéditeur qui remet au transporteur une marchandise ou matériel dangereux, sans en avoir fait connaître au préalable la nature exacte, est responsable de tout préjudice subi en raison du transport de cette marchandise.
+                      L’expéditeur est tenu de réparer le préjudice subi par le transporteur ou toute autre personne aux services de laquelle ce dernier recourt pour l’exécution du contrat de transport, lorsque ce préjudice a pour origine soit le vice propre de la marchandise, soit l’omission, l’insuffisance ou l’inexactitude de ses déclarations ou instructions relativement à la marchandise transportée.
+                      Le transporteur peut, de manière adéquate, décharger, détruire ou rendre inoffensives les marchandises dangereuses qu’il n’aurait pas consenti à prendre en charge s’il avait connu leur nature ou leur caractère.
+                      De même, L’expéditeur qui remet au transporteur des documents, des espèces ou des marchandises de grande valeur, sans en avoir fait connaître au préalable la nature ou la valeur, est responsable de tout préjudice subi en raison de leur transport. Toutefois, le transporteur n’est pas tenu de transporter des documents, des espèces ou des marchandises de grande valeur.
+                      S’il transporte ce type de marchandises, il n’est responsable de la perte que dans le cas où la nature ou la valeur du bien lui a été déclarée. La déclaration mensongère qui trompe sur la nature ou la valeur du bien exonère le transporteur de toute responsabilité.
+                      Paiement du prix et autres frais
+                      L’expéditeur garantit le paiement des frais de transport qui sont calculés en fonction du poids réel du colis ainsi que la distance à parcourir, et tout Envoi pourra faire l’objet d’un nouveau pesage ou d’une nouvelle mesure par Yobanté Express afin de confirmer ledit calcul.
+                      Il doit aussi s’acquitter des frais d’entreposage et les dépenses occasionnées par cette marchandise et en assumer les risques.
+                      Types d’envois objet du transport
+                      L’expéditeur garantit :
+                      L’objet n’est pas classé matériel à risque, marchandise dangereuse, article prohibé ;
+                      Il ne s’agit pas de marchandises contrefaites, des animaux, des lingots d’or, des effets de commerce au porteur, des métaux et pierres précieuses, des armes à feu (qu’elles soient vraies ou fausses), des pièces détachées d’armes à feu, des armes, des explosifs, des minutions, des restes humains, du matériel pornographique ou des stupéfiants) ;
+                      les Envois ne seront pas livrés à des boîtes postales ou à des codes postaux  mais qu’ils seront  livrés à l’adresse du Destinataire fournie par l’Expéditeur mais ne seront pas forcément remis en main propre au Destinataire désigné. Des expéditions à destination d’adresses comportant une zone centrale de réception seront livrées à cette zone ;
+                      Si l’Envoi est considéré comme inacceptable, ou s’il a été sous-évalué au regard de la douane, ou si le Destinataire ne peut être identifié ni retrouvé de manière raisonnable ou si le Destinataire refuse la livraison ou refuse de payer la livraison, Yobanté Express déploiera tous efforts raisonnables pour retourner l’Envoi à l’Expéditeur aux frais de ce dernier, et à défaut l’objet pourra être transféré, aliéné ou vendu par  le service sans que sa responsabilité soit engagée à l’égard de l’Expéditeur ou de toute autre personne, et le produit de la vente sera affecté au paiement des frais engagés et des coûts administratifs qui y sont liés, et le solde sera restitué à l’Expéditeur.
+                      Yobanté Express peut toujours refuser de transporter le matériel pour quelque motif que ce soit.
+                      Emballage
+                      L’expéditeur doit emballer la marchandise de manière adéquate. Il est responsable envers le transporteur et toute autre personne aux services de laquelle ce dernier recourt pour l’exécution du contrat de transport, des dommages aux personnes, au matériel ou à d’autres marchandises, ainsi que des frais encourus en raison de la défectuosité de l’emballage de la marchandise, à moins que, la défectuosité étant apparente ou connue du transporteur au moment de la prise en charge, celui-ci n’ait pas fait de réserves à son sujet.
+                      Lorsque qu’au moment de la prise en charge, un défaut d’emballage apparent ou connu du transporteur présente un risque évident pour la sécurité ou l’intégrité des personnes ou des marchandises, le transporteur doit en aviser la personne responsable de l’emballage et l’inviter à y remédier.
+                      Le transporteur n’est pas tenu de transporter la marchandise si, après l’avis, il n’est pas remédié à ce défaut d’emballage dans un délai raisonnable compte tenu des circonstances de fait.
+                      S’il y a bris d’emballage en cours du transport, le transporteur prend les mesures qui lui paraissent les meilleures dans l’intérêt de l’ayant droit de la marchandise et en avise ce dernier. Si l’emballage brisé ou la marchandise qu’il contient présente un risque pour la sécurité ou l’intégrité des personnes ou des marchandises, le transporteur peut, de manière adéquate, décharger immédiatement la marchandise pour le compte de l’ayant droit et en aviser ce dernier. Après ce déchargement, le transport est réputé terminé. Dans ce cas, le transporteur assume la garde de la marchandise ; toutefois il peut la confier à un tiers et n’est alors responsable que du choix de ce tiers. La marchandise reste alors grevée des créances résultant de la lettre de voiture et de tous autres frais.
+                      Assurance
+                      L’expéditeur peut se souscrire à une police d’assurance couvrant la valeur réelle du bien en cas de perte ou de tout autre préjudice matériel affectant l’envoi.
+
+                      4. Responsabilités et obligations du transporteur et du relayeur
+                      Vérification
+                      Lors de la prise en charge de la marchandise, le transporteur est tenu de vérifier :
+                      l’exactitude des mentions de la lettre de voiture relatives au nombre de colis, à leurs marques ainsi qu’à leurs numéros ;
+                      l’état apparent de la marchandise et de son emballage.
+                      Si le transporteur n’a pas les moyens raisonnables de vérifier l’exactitude des mentions visées, il inscrit sur la lettre de voiture des réserves qui doivent être motivées.
+                      L’expéditeur a le droit d’exiger la vérification par le transporteur du poids brut ou de la quantité autrement exprimée de la marchandise. Il peut aussi exiger la vérification du contenu du colis.
+                      Livraison
+                      Le transporteur est tenu de livrer la marchandise au destinataire au lieu prévu pour la livraison, à défaut d’un point relais situé sur la zone, et de lui remettre la copie de la lettre de voiture qui accompagne la marchandise, le tout contre décharge. La livraison doit être faite dans le délai convenu ou, à défaut de délai convenu, dans le délai qu’il est raisonnable d’accorder à un transporteur diligent, compte tenu des circonstances de fait.
+                      S’il y a un point relais situé sur la zone, le transporteur remet le colis à ce dernier. Le relayeur est ainsi tenu de vérifier le colis et d’en accuser réception.
+                      Ensuite, le relayeur est tenu d’aviser le destinataire de l’arrivée de la marchandise et du délai imparti pour sa récupération, à moins que la livraison de la marchandise ne s’effectue à la résidence ou à l’établissement du destinataire.
+                      Avant de prendre livraison de la marchandise, le destinataire est tenu de payer le montant des créances résultant de la lettre de voiture. En cas de contestation à ce sujet, le relayeur n’est obligé de livrer la marchandise que si une caution lui est fournie par le destinataire.
+                      Contestation
+                      Le destinataire doit adresser au relayeur un avis écrit indiquant la nature des pertes ou avaries au plus tard le premier jour ouvrable qui suit la date de la livraison, en cas de pertes ou avaries apparentes ; dans les sept jours suivant la date de la livraison, dimanche et jours fériés non compris, en cas de pertes ou avaries non apparentes. À défaut d’avis dans ces délais, la marchandise est présumée reçue dans l’état décrit à la lettre de voiture.
+                      Un retard à la livraison ne peut donner lieu à une indemnité que si un avis écrit  est adressé au transporteur dans les vingt-un jours suivant la date de l’avis d’arrivée de la marchandise au lieu prévu pour la livraison ou, le cas échéant, celle de l’arrivée de la marchandise à la résidence ou à l’établissement du destinataire lorsque la livraison doit y être effectuée.
+                      Rémunération
+                      Le relayeur et le transporteur perçoivent chacun un pourcentage appliqué sur le prix de transport du colis.
+
+                      5. Garanties et Responsabilités de Yobanté Express
+                      Yobanté express met tout en œuvre pour offrir à l'Utilisateur des informations vérifiées et à jour, mais elle ne saurait être tenue pour responsable des erreurs, des inexactitudes, des omissions ou d'une absence de disponibilité des informations contenues sur son Site, ni des dommages directs ou indirects pouvant en résulter.
+                      L'Utilisateur est seul responsable de l'interprétation et de l'utilisation de la documentation ainsi fournie.
+                      La responsabilité de Yobanté Express est strictement limitée aux seules pertes et dommages découlant directement de sa faute.
+                      Tous autres types de perte ou de préjudice sont exclus (y compris mais sans que cela soit limitatif, la perte de recettes, d’un intérêt ou d’affaires futures) que ladite perte ou ledit préjudice soit spécial ou indirect, et même si l’attention de Yobanté Express a été attirée sur le risque d’une telle perte ou d’un tel préjudice avant ou après acceptation de l’Envoi.
+                      Les réclamations sont limitées à une réclamation pour le paiement de la valeur réelle du bien, et le règlement de ladite réclamation constituera le règlement définitif de toute perte ou de tout préjudice en relation avec ladite réclamation.
+                      Conformément à ses obligations légales, Yobanté Express peut supprimer totalement ou partiellement un contenu après qu'un tiers a fait valoir le caractère illicite du contenu concerné, et peut sur demande formelle des autorités judiciaires transmettre les éléments permettant l'identification des Utilisateurs ayant contribué à ce contenu.
+                      Yobanté Express met tout en œuvre pour offrir à l'Utilisateur un Site sécurisé, notamment en matière d'absence de virus. Il appartient cependant à l'Utilisateur de protéger son matériel ou réseau informatique en se dotant d'un anti-virus qui sera régulièrement mis à jour par l'Utilisateur. La Société ne pourra en aucun cas être tenue pour responsable d'une quelconque intrusion de virus dans le matériel informatique de l'Utilisateur, ni des dommages directs ou indirects pouvant en résulter.
+                      6. Inscription et compte Yobanté Express
+                      Le transporteur  ne peut utiliser la totalité du service Yobanté Express  qu'après s'être inscrite en créant un compte, et s'être connectée en indiquant comme identifiants son adresse email et son mot de passe.
+                      Les informations requises par Yobanté Express sont nécessaires et obligatoires pour la création du compte de l'Utilisateur. En particulier, l'adresse électronique pourra être utilisée par Yobanté Express pour l'administration, la gestion et l'animation du Service.
+                      L'Utilisateur peut modifier toutes les informations qu'il a renseignées lors de son inscription, en utilisant les paramètres de gestion de son compte. Il prend ainsi la responsabilité de l'ensemble des actions effectuées au moyen de ses informations d'identifiants, et notamment, et non exclusivement, de ses Contributions.
+                      Les identifiants et les communications entre Utilisateurs doivent respecter les règles de bonne conduite prévues dans les présentes Conditions d'utilisation.
+                      En cas de violation de ces dispositions, Yobanté Express pourra fermer le compte sans préavis aux torts exclusifs de l'Utilisateur, et l'Utilisateur ne pourra plus utiliser le service Yobanté Express.
+                      La création d'un compte emporte l'adhésion aux présentes Conditions d'utilisation. En s'inscrivant, l'Utilisateur accepte notamment de recevoir les informations de Yobanté Express par email, dont il pourra se désabonner sur simple demande sur la page.
+                      7. Données personnelles
+                      Yobanté Express veille au respect de la vie privée et à la protection des données personnelles des utilisateurs du site.
+                      Il décline toute sa responsabilité en cas de faute de l’usager  ou  d’utilisation non conforme aux règles de bonne conduite. Toutefois, la responsabilité pourrait être  partagée si le dommage résulte de la négligence de l’utilisateur et de la défaillance de la sécurité du site.
+                      8. Règles de bonne conduite
+                      L'Utilisateur est le seul responsable des informations, des messages et d'une manière générale de tout contenu qu'il diffuse via les services interactifs de Yobanté Express tels que les services de question-réponse, de commentaire, de messagerie privée.
+                      L'utilisation du Service à des fins de diffusion auprès des autres Utilisateurs de messages à caractère publicitaire ou commercial, sans autorisation préalable, est prohibée. L'Utilisateur s'engage à faire preuve de courtoisie envers les autres Utilisateurs.
+                      Sont interdites toutes les contributions et communications faisant ouvertement l'apologie des crimes contre l'humanité, incitant à la haine raciale, à la violence, ayant un caractère érotique, pornographique, diffamatoire, injurieux, mensonger, attentatoire au respect des personnes, contraire à l'ordre public ou aux bonnes mœurs, ainsi que le parasitage commercial.
+                      Le compte de tout Utilisateur ne respectant pas ces conditions pourra être fermé, et ses messages effacés, sans préavis.
+                      En cas de violation de ces dispositions, le Contributeur engage sa seule responsabilité. De plus, Yobanté Express  pourra alors, selon la gravité des faits, corriger ou supprimer la ou les Contributions litigieuses et/ou fermer de plein droit et sans préavis le compte aux torts exclusifs de l'Utilisateur, et ce dernier ne pourra plus utiliser le service.
+                      En cas de comportement illicite ou malveillant, l'Utilisateur est encouragé à en alerter Yobanté Express par un courriel, en indiquant en objet « Signalement d'abus », en procédant à une transcription complète et fidèle du comportement ou du message litigieux si celui-ci n'est pas public.
+                      L'Utilisateur accepte que Yobanté Express prenne l'initiative, sans mise en demeure préalable, de supprimer, en totalité ou partiellement, tout contenu qu'il diffuse ou qui lui est adressé via les services interactifs, si ce contenu est susceptible de porter atteinte aux lois et règlements en vigueur ou aux bonnes mœurs.
+                      9. Règlement des litiges
+                      Convention de preuve
+                      Les parties conviennent qu'elles peuvent procéder à l'échange des informations nécessaires à l'exécution du contrat par voie électronique. Toute communication électronique entre les parties est présumée avoir la même force probante qu'un écrit sur support papier.
+                      Nullité partielle
+                      En cas de nullité d'une stipulation substantielle des Conditions d'utilisation ou si cette stipulation est réputée non écrite, en totalité ou en partie, en application d'une loi ou d'un règlement ou à la suite d'une décision juridictionnelle définitive, les autres stipulations resteront en vigueur et conserveront leur pleine force obligatoire entre les parties.
+                      Loi applicable
+                      Les présentes Conditions d'utilisation sont régies par le droit sénégalais (droit national et conventions et traités ratifiées).
+                      Procédure de résolution amiable des litiges
+                      Les parties s'engagent, en cas de difficultés dans l'exécution du contrat et préalablement à toute résiliation, résolution et/ou procédure judiciaire, à soumettre leur différend à une procédure amiable de conciliation ou d’arbitrage conformément au droit sénégalais.
+                      À ce titre, la partie qui souhaite mettre en jeu la procédure amiable de conciliation ou d’arbitrage devra notifier à l'autre partie, par lettre recommandée avec demande d'avis de réception, son intention de mettre en jeu ladite procédure en précisant les difficultés d'application rencontrées.
+                      Pendant toute la période durant laquelle de telles difficultés seraient constatées, les parties conviennent que la continuité des prestations prévues aux Conditions d'utilisation l'emporte sur toute autre considération.
+                      À défaut d'accord intervenu entre les parties dans les quinze (15) jours suivant la notification visée plus haut, les parties retrouveront toute liberté d'action.
+                      Attribution de compétence juridictionnelle
+                      En cas de litige, compétence expresse est attribuée au tribunal régional où se situe le siège social de Yobanté Express où est formalisé le contrat entre les parties, nonobstant pluralité de défendeur ou appel en garantie, même pour les procédures d'urgence ou les procédures conservatoires en référé ou par requête.
+
+                      Le Gérant
+                  </p>
+
+
+
+              </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="akModal.hide()">FERMER</button>
+          </div>
+
+      </div>
+      <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+
+<ng-snotify></ng-snotify>

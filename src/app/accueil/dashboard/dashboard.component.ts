@@ -19,7 +19,7 @@ import {
 })
 export class DashboardComponent implements OnInit {
 
-
+  //=======================================
   single: any[];
   multi: any[];
 
@@ -39,7 +39,6 @@ export class DashboardComponent implements OnInit {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
 
-   d =  document.querySelector('.legend-wrap');
 
 
   constructor() {
@@ -50,8 +49,6 @@ export class DashboardComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.d.className = '.legend-wrap_ak';
-
 
 
   }

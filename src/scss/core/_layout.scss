@@ -82,7 +82,8 @@ app-root {
   }
 
   .main, .app-footer {
-    margin-left: $sidebar-width;
+    //margin-left: $sidebar-width;
+    margin-left: 0;
   }
 
   &.sidebar-hidden {

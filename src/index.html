@@ -10,7 +10,7 @@
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,AngularJS,Angular,Angular2,jQuery,CSS,HTML,RWD,Dashboard">
 
-    <title>SimpliQ - Bootstrap 4 Admin Template</title>
+    <title>OKANI</title>
 
     <!-- Icons -->
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
@@ -20,31 +20,68 @@
     <link href="assets/css/glyphicons.css" rel="stylesheet">
     <link href="assets/css/glyphicons-filetypes.css" rel="stylesheet">
     <link href="assets/css/glyphicons-social.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/ngx-bootstrap/datepicker/bs-datepicker.css">
+
+    <style type="text/css">
+      * {
+        margin: 0%;
+        padding: 0%;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        background: #FFFF;
+      }
+
+      #loader-container {
+        width: 200px;
+        height: 200px;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+      }
+
+      .loader-div {
+        box-sizing: content-box;
+        width: calc(100% - 16px);
+        height: calc(100% - 16px);
+        border: 8px solid rgba(0, 0, 0, 0);;
+        border-top: 8px solid #1e819e;
+        border-radius: 50%;
+        animation: rotate 5s linear infinite;
+      }
+
+      @keyframes rotate {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
 
 </head>
 
-<!-- BODY options, add following classes to body to change options
-
-// Header options
-1. '.header-fixed'					- Fixed Header
-
-// Sidebar options
-1. '.sidebar-fixed'					- Fixed Sidebar
-2. '.sidebar-hidden'				- Hidden Sidebar
-3. '.sidebar-off-canvas'		- Off Canvas Sidebar
-4. '.sidebar-compact'				- Compact Sidebar Navigation (Only icons)
-
-// Aside options
-1. '.aside-menu-fixed'			- Fixed Aside Menu
-2. '.aside-menu-hidden'			- Hidden Aside Menu
-3. '.aside-menu-off-canvas'	- Off Canvas Aside Menu
-
-// Footer options
-1. 'footer-fixed'						- Fixed footer
-
--->
 
 <body class="app header-fixed sidebar-fixed">
+    <div id="loader-container">
+        <div class="loader-div">
+          <div class="loader-div">
+            <div class="loader-div">
+              <div class="loader-div">
+                <div class="loader-div">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     <script>
         window.__theme = 'bs4';
     </script>

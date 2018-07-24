@@ -5,6 +5,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { FullLayoutComponent } from './layouts/full-layout/full-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 
+//==============================
+import { HomeLayoutComponent } from './layouts/home/home-layout.component';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { VoyageurLayoutComponent } from './layouts/voyageur-layout/voyageur-layout.component';
+import { FourniseurLayoutComponent } from './layouts/fourniseur-layout/fourniseur-layout.component';
+import { StaffLayoutComponent } from './layouts/staff-layout/staff-layout.component';
+
+
 import { BeforeLoginService, AfterLoginService } from './guard';
 
 
@@ -12,10 +20,27 @@ import { BeforeLoginService, AfterLoginService } from './guard';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'page/login',
+    redirectTo: 'accueil',
     pathMatch: 'full',
   },
+
+  //=========================================
   {
+    path: '',
+    component: HomeLayoutComponent,
+    data: {
+      title: 'Accueil'
+    },
+    children: [
+      {
+        path: '',
+        loadChildren: './home/home.module#HomeModule'
+      }
+    ]
+  },
+
+  //=========================================
+/*   {
     path: '',
     component: FullLayoutComponent,
     canActivate: [AfterLoginService],
@@ -42,7 +67,7 @@ export const routes: Routes = [
         loadChildren: './auth/auth.module#AuthModule',
       }
     ]
-  }
+  } */
 
 ];
 
