@@ -24,6 +24,9 @@ import { LoadingModule } from 'ngx-loading';
 import { InscriptionVoyageurComponent } from './inscription-voyageur/inscription-voyageur.component';
 import { InscriptionFournisseurComponent } from './inscription-fourniseur/inscription-fourniseur.component';
 
+
+import { AaDatepickerModule } from 'ngx-animating-datepicker';
+
 import { NgxSelectModule, INgxSelectOptions } from 'ngx-select-ex';
 const CustomSelectOptions: INgxSelectOptions = { // Check the interface for more options
   optionValueField: 'id',
@@ -42,6 +45,7 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
     LoadingModule,
     //=================
     FormsModule,
+    AaDatepickerModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),
     AccordionModule.forRoot(),

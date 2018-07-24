@@ -14,11 +14,6 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxSelectModule, INgxSelectOptions } from 'ngx-select-ex';
 
-
-import { SlimScroll } from 'angular-io-slimscroll';
-
-
-
 const CustomSelectOptions: INgxSelectOptions = { // Check the interface for more options
   optionValueField: 'id',
   optionTextField: 'name'
@@ -44,7 +39,7 @@ const CustomSelectOptions: INgxSelectOptions = { // Check the interface for more
    providers: [
      { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
      SnotifyService],
-  declarations: [ListVoyagesComponent, SlimScroll],
-  exports: [ListVoyagesComponent, SlimScroll]
+  declarations: [ListVoyagesComponent],
+  exports: [ListVoyagesComponent]
 })
 export class PartageModule { }

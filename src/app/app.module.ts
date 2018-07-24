@@ -14,19 +14,14 @@ import { BreadcrumbsComponent } from './shared/breadcrumb.component';
 // Routing Module
 import { AppRoutingModule } from './app.routing';
 
-
-//==============================
+//===============Layouts===============
 import { HomeLayoutComponent } from './layouts/home/home-layout.component';
 
-//Layouts
-import { FullLayoutComponent } from './layouts/full-layout/full-layout.component';
-import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 //========================Authentification===========================
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
-import { BeforeLoginService, AfterLoginService } from './guard';
 import { TokenService } from './services/token.service';
 import { AuthakService } from './services/authak.service';
 import {SlimLoadingBarModule} from 'ng2-slim-loading-bar';
@@ -56,8 +51,6 @@ import { StaffLayoutComponent } from './layouts/staff-layout/staff-layout.compon
   declarations: [
     AppComponent,
     HomeLayoutComponent,
-    FullLayoutComponent,
-    AuthLayoutComponent,
     NAV_DROPDOWN_DIRECTIVES,
     BreadcrumbsComponent,
     SIDEBAR_TOGGLE_DIRECTIVES,
@@ -68,8 +61,6 @@ import { StaffLayoutComponent } from './layouts/staff-layout/staff-layout.compon
     StaffLayoutComponent,
   ],
   providers: [
-    BeforeLoginService,
-    AfterLoginService,
     TokenService,
     AuthakService,
     SnotifyService,

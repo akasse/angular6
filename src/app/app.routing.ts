@@ -1,9 +1,6 @@
 import { NgModule, Testability } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-//Layouts
-import { FullLayoutComponent } from './layouts/full-layout/full-layout.component';
-import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 
 //==============================
 import { HomeLayoutComponent } from './layouts/home/home-layout.component';
@@ -11,9 +8,6 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { VoyageurLayoutComponent } from './layouts/voyageur-layout/voyageur-layout.component';
 import { FourniseurLayoutComponent } from './layouts/fourniseur-layout/fourniseur-layout.component';
 import { StaffLayoutComponent } from './layouts/staff-layout/staff-layout.component';
-
-
-import { BeforeLoginService, AfterLoginService } from './guard';
 
 
 
