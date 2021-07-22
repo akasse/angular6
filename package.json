@@ -125,7 +125,7 @@
     "ts-helpers": "1.1.2",
     "vi-ng2-iq-select2": "^4.3.4",
     "web-animations-js": "^2.3.1",
-    "xlsx": "^0.12.12",
+    "xlsx": "^0.17.0",
     "zone.js": "0.8.26"
   },
   "devDependencies": {
